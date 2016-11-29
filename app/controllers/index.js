@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   // isDisabled:true,
+  headerMessage: 'Coming Soon',
+  responseMessage: '',
   emailAddress:'',
   // actualEmailAddress:Ember.computed('emailAddress',function(){
   //   console.log('acutalemailAdree:',this.get('emailAddress'));
@@ -13,7 +15,11 @@ export default Ember.Controller.extend({
   isDisabled: Ember.computed.not('isValid'),
   actions:{
     saveInitations(){
-      alert(`Saving of the following email address is in progress: ${this.get('emailAddress')}`);
+      const email=this.get('emailAddress');
+  
+      const newInvitation=this.store.createRecord('invitation',{email:email});
+      newInvitation.save();
+      
       this.set('responseMessage',`thank you we just save your EmailAdress:${this.get('emailAddress')}`);
       this.set('emailAddress','');
     }

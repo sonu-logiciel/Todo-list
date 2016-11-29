@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
   // emailAddressChange:Ember.observer('emailAddress',function(){
   //   console.log('emailAddressChange:',this.get('emailAddress'));
   // }),
-  isDisabled:Ember.computed('emailAddress',function(){
-    return this.get('emailAddress')==='';
-  })
+  isValid: Ember.computed.match('emailAddress', /^.+@.+\..+$/),
+  isDisabled: Ember.computed.not('isValid')
+  
 });

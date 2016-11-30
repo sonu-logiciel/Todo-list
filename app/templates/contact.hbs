@@ -1,45 +1,45 @@
 <div class="jumbotron text-center">
 	<div class="form-horizontal form-group form-group-lg row">
-	    <div class="col-xs-12 
-	    			col-xs-offset-1 
-	    			col-sm-6 col-sm-offset-1 col-md-8 col-md-offset-2">
-			<div class="form-group has-success has-feedback">
-				<div class="input-group">
-				    <span class="input-group-addon">@</span>
-				    {{input type="email" 
-				      value=email 
-				      class="form-control" 
-				      placeholder="Please type your e-mail address" 
-				      autofocus="autofocus"}}
-				</div>
-			  {{#if isValidEmail}}
-				<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-			  	<span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
-			  	{{else}}
-			  	<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-  				<span id="inputError2Status" class="sr-only">(error)</span>
-			  {{/if}}
-			</div>
-		</div>
-	    <div class="col-xs-10 col-xs-offset-1 
-	    			col-sm-6 col-sm-offset-1 col-md-8 
-	    			col-md-offset-2">
-	    	{{textarea class="form-control" placeholder="Your message. (At least 5 characters.)" rows="7" value=message}}
-	    </div>
-	    <div class="col-xs-10 col-xs-offset-1 col-sm-6 
-	    			col-sm-offset-1 col-md-3 col-md-offset-2">
-	        <button disabled={{isNotValid}} 
-	        		{{action 'sendResponse'}} 
-	        		class="btn btn-primary btn-lg btn-block">
-	        	Request invitation
-	        </button>
-	    </div>
+    <div class="form-group has-success has-feedback">
+      <div class="col-sm-12">
+        <div class="input-group">
+          <span class="input-group-addon">@</span>
+            {{input type="email"
+              value=email
+              class="form-control" id="inputGroupSuccess2" aria-describedby="inputGroupSuccess2Status"
+              placeholder="Please type your e-mail address"
+              autofocus="autofocus"}}
+          {{#if isValidEmail}}
+              <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+              <span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
+          {{else}}
+              <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+              <span id="inputError2Status" class="sr-only">(error)</span>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-12">
+        {{textarea class="form-control" rows="6" id="comment" placeholder="Your message. (At least 5 characters.)" value=message}}
+      </div>
+    </div>
+	  <div class="form-group">
+      <div class="col-sm-12">
+        <button disabled={{isNotValid}}
+        		{{action 'sendResponse'}}
+        		class="btn btn-primary btn-md pull-left">
+        	Request invitation
+        </button>
+      </div>
+	  </div>
 	</div>
+  {{#if responseAlert}}
+    <div class="alert alert-success alert-dismissable fade in alert-message">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Success!</strong> {{responseAlert}}
+    </div>
+  {{/if}}
 </div>
-{{#if responseAlert}}
-    <div class="alert alert-success">{{responseAlert}}</div>
-{{/if}}
 <br/><br/>
-  
-
 {{outlet}}

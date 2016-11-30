@@ -13,3 +13,10 @@ body {
   -webkit-transition:opacity 1s; /* Safari */
   transition: opacity 1s;
 }
+html {
+  overflow-y: scroll;
+}
+
+.library-item {
+  min-height: 150px;
+}
